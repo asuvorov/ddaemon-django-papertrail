@@ -81,7 +81,7 @@ test-local: run-local ## Run Tests.
 
 lint: install ## Run Linter.
 	$(info Running Linter)
-	$(ENV)/pylint papertrail/ --reports=y > reports/pylint.report
+	$(ENV)/pylint papertrail/ settings/ setup.py --reports=y > reports/pylint.report
 .PHONY: lint
 
 # =============================================================================
