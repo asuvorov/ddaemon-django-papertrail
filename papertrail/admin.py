@@ -298,17 +298,9 @@ class EntryAdmin(admin.ModelAdmin):
         ("", {
             "classes":  (""),
             "fields":   (
-                "event_type", "message",
-                "data", "custom_data",
+                ("event_type", "message"),
+                "data",
                 "external_key",
-            ),
-        }),
-        ("Flags", {
-            "classes":  (
-                "grp-collapse grp-open",
-            ),
-            "fields":   (
-                ("is_hidden", "is_private", "is_deleted"),
             ),
         }),
         ("Significant Dates", {
