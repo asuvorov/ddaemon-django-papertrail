@@ -24,6 +24,7 @@ def get_version():
 
         return VERSION_RE.search(init).group(1)
 
+
 # -----------------------------------------------------------------------------
 # --- Allow `setup.py` to be run from any Path.
 # -----------------------------------------------------------------------------
@@ -36,26 +37,34 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     license="GPLv3 License",
-    description="DDaemon Core.",
+    description="Django Papertrail",
     long_description=README,
-    url="https://github.com/asuvorov/ddaemon-django-papertrail/",
+    long_description_content_type="text/markdown",
+    url="https://github.com/asuvorov/ddaemon-django-papertrail",
     author="Artem Suvorov",
     author_email="artem.suvorov@gmail.com",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
+        "Environment :: Console",
         "Environment :: Plugins",
         "Framework :: Django",
+        "Framework :: Django :: 4.2",
+        "Framework :: Pytest",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: GPLv3 License",
+        "Intended Audience :: Information Technology",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        # "License-Expression: GPL-3.0",
+        # "License-File: LICENSE",
         "Natural Language :: English",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX",
         "Operating System :: POSIX :: Linux",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.10.15",
+        "Programming Language :: Python :: 3.12",
+        "Topic :: Scientific/Engineering",
+        "Topic :: Security",
     ],
-    install_requires=[
-        "django-admin-rangefilter==0.12.4",
-    ],
+    install_requires=[],
     test_suite="nose.collector",
     tests_require=["nose"],
 )
