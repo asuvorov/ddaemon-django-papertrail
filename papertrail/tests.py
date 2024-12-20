@@ -116,6 +116,7 @@ class TestBasic(TestCase):
         # Setting and retrieving a "virtual" target
         user_type = ContentType.objects.get_for_model(User)
         e.set("virtual", (user_type, 10000))
+
         self.assertEqual(e["virtual"], None)
         self.assertEqual(e.get("virtual", "a-default-value"), None)
 
@@ -168,20 +169,27 @@ class TestBasic(TestCase):
 
         all_users = User.objects.all()
         self.assertEqual(
-            set(Entry.objects.filter(event_type="test-entry").objects_represented(all_users, "user")),
+            set(Entry.objects.filter(event_type="test-entry")
+                             .objects_represented(all_users, "user")),
             set([user1, user2]))
         self.assertEqual(
-            set(Entry.objects.filter(event_type="test-entry").related_to(group=some_group).objects_represented(all_users, "user")),
+            set(Entry.objects.filter(event_type="test-entry")
+                             .related_to(group=some_group)
+                             .objects_represented(all_users, "user")),
             set([user1, user2]),)
         self.assertEqual(
-            Entry.objects.filter(event_type="test-entry").related_to(group=some_group2).objects_represented(all_users, "user").get(),
-            user2)
-        self.assertTrue(Entry.objects.filter(event_type="test-entry").related_to(group=some_group3).exists())
+            Entry.objects.filter(event_type="test-entry")
+                         .related_to(group=some_group2)
+                         .objects_represented(all_users, "user").get(), user2)
+        self.assertTrue(Entry.objects.filter(event_type="test-entry")
+                                     .related_to(group=some_group3).exists())
         self.assertFalse(
-            Entry.objects.filter(event_type="test-entry").related_to(group=some_group3).objects_represented(all_users, "user").exists())
+            Entry.objects.filter(event_type="test-entry")
+                         .related_to(group=some_group3)
+                         .objects_represented(all_users, "user").exists())
         self.assertEqual(
-            Entry.objects.filter(event_type="test-entry").objects_not_represented(all_users, "user").get(),
-            user3)
+            Entry.objects.filter(event_type="test-entry")
+                         .objects_not_represented(all_users, "user").get(), user3)
 
     @unittest.skipIf(django_version < (1, 9), "no native JSONField")
     def test_json_field_filtering(self):
