@@ -1,4 +1,4 @@
-# ddaemon-django-papertrail
+# ddaemon-django-papertrail (Fork)
 
 ## Project Description
 
@@ -6,13 +6,25 @@ An elegant Solution for keeping a relational Log of chronological Events in a Dj
 
 ## Installation
 
-To install `django-papertrail`:
+1. Install `ddaemon-django-papertrail` via `pip`: `pip install ddaemon-django-papertrail`;
 
-```bash
- python manage.py migrate
-```
+2. Set up `settings.py` in your Django Project:
+   
+   ```python
+   INSTALLED_APPS = (
+       ...,
+       "papertrail",
+       ...
+   )
+   ```
 
-## Using it
+3. Run Migrations:
+   
+   ```bash
+   [~]$ python manage.py migrate
+   ```
+
+## Usage
 
 ```python
 import papertrail
@@ -112,7 +124,7 @@ users_who_never_logged_in = papertrail
 
 ## Admin Integration
 
-`django-papertrail` provides a Django Admin Integration to both View Entries (simple Django Admin Entry List, usually available under `/admin/papertrail/entry/`), as well as a more advanced Integration for Objects you want to keep the Track of.
+`ddaemon-django-papertrail` provides a Django Admin Integration to both View Entries (simple Django Admin Entry List, usually available under `/admin/papertrail/entry/`), as well as a more advanced Integration for Objects you want to keep the Track of.
 
 The advanced Integration provides two useful Functionalities:
 
